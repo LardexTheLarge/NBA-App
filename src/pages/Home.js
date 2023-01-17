@@ -6,21 +6,15 @@ const Home = () => {
   const [results, setResults] = useState([]);
 
   const search = async (query) => {
-    const response = await getAllPlayers();
+    const response = await getAllPlayers(query);
     setResults(response);
   };
 
   useEffect(() => {
-    // search("players");
-    search();
+    search("players");
   }, []);
 
-  return (
-    <div>
-      {/* {results.data[0].first_name} */}
-      {<PlayerList results={results.data} />}
-    </div>
-  );
+  return <div>{<PlayerList results={results.data} />}</div>;
 };
 
 export default Home;

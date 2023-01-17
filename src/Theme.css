@@ -24,3 +24,7 @@
 body {
   background-color: var(--user);
 }
+
+.card-size {
+  width: 18rem;
+}

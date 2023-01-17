@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export async function getAllPlayers(query) {
   const options = {
     method: "GET",
@@ -10,7 +8,7 @@ export async function getAllPlayers(query) {
   };
 
   const response = await fetch(
-    "https://free-nba.p.rapidapi.com/players?page=0&per_page=25",
+    `https://free-nba.p.rapidapi.com/${query}?page=0&per_page=25`,
     options
   );
   const players = await response.json();
