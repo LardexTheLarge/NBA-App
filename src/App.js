@@ -7,8 +7,10 @@ import "./Theme.css";
 function App() {
   return (
     <Router>
-      <Header />
-      <Home />
+      <div className="flex-column justify-flex-start min-100-vh">
+        <Header />
+        <Home />
+      </div>
     </Router>
   );
 }

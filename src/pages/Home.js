@@ -14,7 +14,13 @@ const Home = () => {
     search("players");
   }, []);
 
-  return <div>{<PlayerList results={results.data} />}</div>;
+  return (
+    <main className="card-container">
+      <div className="col-12 col-md-10 my-3">
+        <PlayerList results={results.data} />
+      </div>
+    </main>
+  );
 };
 
 export default Home;

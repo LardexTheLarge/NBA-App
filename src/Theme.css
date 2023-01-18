@@ -28,3 +28,8 @@ body {
 .card-size {
   width: 18rem;
 }
+
+.card-container {
+  display: flex;
+  justify-content: center;
+}
