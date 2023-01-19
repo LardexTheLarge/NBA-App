@@ -16,7 +16,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage] = useState(10);
   // const [results, setResults] = useState([]);
 
   // const search = async (query) => {
@@ -43,11 +43,17 @@ const Home = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
         <PlayerList posts={currentPosts} loading={loading} />
-        <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} />
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={posts.length}
+          paginate={paginate}
+        />
       </div>
     </main>
   );
