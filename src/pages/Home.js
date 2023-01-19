@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 // import { getAllPlayers } from "../api/index";
 import PlayerList from "../components/PlayerList";
+import { Pagination } from "../components/Pagination";
 
 const options = {
   method: "GET",
@@ -46,6 +47,7 @@ const Home = () => {
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
         <PlayerList posts={currentPosts} loading={loading} />
+        <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} />
       </div>
     </main>
   );
