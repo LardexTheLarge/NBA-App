@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 // import { getAllPlayers } from "../api/index";
-// import PlayerList from "../components/PlayerList";
+import PlayerList from "../components/PlayerList";
 
 const options = {
   method: "GET",
@@ -31,17 +31,21 @@ const Home = () => {
         "https://free-nba.p.rapidapi.com/players",
         options
       );
-      setPosts(res.data);
+      setPosts(res.data.data);
       setLoading(false);
     };
 
     fetchPlayers();
   }, []);
-  console.log(posts);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
-        {/* <PlayerList results={results.data} /> */}
+        <PlayerList posts={currentPosts} loading={loading} />
       </div>
     </main>
   );
