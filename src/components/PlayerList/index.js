@@ -11,7 +11,7 @@ function PlayerList({ posts, loading }) {
   return (
     <Row xs={1} md={3} className="g-4">
       {posts.map((players) => (
-        <Col key={players._id}>
+        <Col key={players.id}>
           <Card className="bg-main">
             <Card.Body>
               <Card.Title className="text-light">

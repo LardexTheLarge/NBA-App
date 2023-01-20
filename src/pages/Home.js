@@ -7,23 +7,23 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [meta, setMeta] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(meta.next_page);
+  const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(25);
 
-  const options = {
-    method: "GET",
-    url: "https://free-nba.p.rapidapi.com/players",
-    params: { page: meta.next_page, per_page: "25" },
-    headers: {
-      "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
-      "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
-    },
-  };
+  // const options = {
+  //   method: "GET",
+  //   url: "https://free-nba.p.rapidapi.com/players",
+  //   params: { page: meta.next_page, per_page: "25" },
+  //   headers: {
+  //     "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
+  //     "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
+  //   },
+  // };
 
   useEffect(() => {
     const fetchPlayers = async () => {
       setLoading(true);
-      const res = await axios.request(options);
+      const res = await axios.get("https://www.balldontlie.io/api/v1/players");
       setPosts(res.data.data);
       setMeta(res.data.meta);
       setLoading(false);
@@ -32,10 +32,11 @@ const Home = () => {
     fetchPlayers();
   }, []);
 
-  // console.log(posts);
+  console.log(meta);
+  console.log(posts);
 
-  const indexOfLastPost = meta.current_page * meta.per_page;
-  const indexOfFirstPost = indexOfLastPost - meta.per_page;
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -45,9 +46,9 @@ const Home = () => {
       <div className="col-12 col-md-10 my-3">
         <PlayerList posts={currentPosts} loading={loading} />
         <Pagination
-          // currentPage={currentPage}
-          // nextPage={meta.next_page}
-          totalPages={meta.total_pages}
+          meta={meta}
+          postsPerPage={postsPerPage}
+          totalPosts={meta.total_count}
           paginate={paginate}
         />
       </div>
