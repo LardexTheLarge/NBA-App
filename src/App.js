@@ -9,7 +9,9 @@ function App() {
     <Router>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
-        <Home />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </Router>
   );
