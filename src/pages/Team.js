@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import PlayerList from "../components/PlayerList";
+import TeamList from "../components/TeamList/Index";
 import { Pagination } from "../components/Pagination";
 
-const Home = () => {
+const Team = () => {
   const [posts, setPosts] = useState([]);
   const [meta, setMeta] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(27);
+  const [postsPerPage] = useState(30);
 
   const options = {
     method: "GET",
@@ -19,8 +19,6 @@ const Home = () => {
       "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
     },
   };
-
-  // console.log(options.params);
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -34,9 +32,6 @@ const Home = () => {
     fetchPlayers();
   }, []);
 
-  // console.log(meta);
-  // console.log(posts);
-
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -46,15 +41,10 @@ const Home = () => {
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
-        <PlayerList posts={currentPosts} loading={loading} />
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={meta.total_count}
-          paginate={paginate}
-        />
+        <TeamList posts={currentPosts} loading={loading} />
       </div>
     </main>
   );
 };
 
-export default Home;
+export default Team;
