@@ -4,24 +4,18 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 // In our return method, we use the map method to return a new array of `li` and `img` elements that are specific to each search result
-function TeamList({ posts, loading }) {
+function GameList({ posts, loading }) {
   if (loading) {
     return <h3>...Loading</h3>;
   }
   return (
     <Row xs={1} md={3} className="g-4">
-      {posts.map((teams) => (
-        <Col key={teams.id}>
+      {posts.map((game) => (
+        <Col key={game.id}>
           <Card className="bg-main">
             <Card.Body>
-              <Card.Title className="text-light">
-                {teams.full_name}, {teams.abbreviation}
-              </Card.Title>
-              <div
-                className={teams.conference === "East" ? "east-bg" : "west-bg"}
-              >
-                Conference: {teams.conference}
-              </div>
+              <Card.Title className="text-light">game</Card.Title>
+              <div className="d-grid">date</div>
             </Card.Body>
           </Card>
         </Col>
@@ -30,4 +24,4 @@ function TeamList({ posts, loading }) {
   );
 }
 
-export default TeamList;
+export default GameList;
