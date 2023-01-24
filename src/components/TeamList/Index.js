@@ -16,7 +16,7 @@ function TeamList({ posts, loading }) {
           <Card className="bg-main">
             <Card.Body>
               <Card.Title className="text-light">
-                {teams.city}, {teams.abbreviation}
+                {teams.full_name}, {teams.abbreviation}
               </Card.Title>
               <div className="d-grid">Conference: {teams.conference}</div>
             </Card.Body>

@@ -36,8 +36,6 @@ const Team = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
