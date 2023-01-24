@@ -18,7 +18,11 @@ function TeamList({ posts, loading }) {
               <Card.Title className="text-light">
                 {teams.full_name}, {teams.abbreviation}
               </Card.Title>
-              <div className="d-grid">Conference: {teams.conference}</div>
+              <div
+                className={teams.conference === "East" ? "east-bg" : "west-bg"}
+              >
+                Conference: {teams.conference}
+              </div>
             </Card.Body>
           </Card>
         </Col>

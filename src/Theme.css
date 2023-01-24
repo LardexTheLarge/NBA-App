@@ -33,3 +33,13 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.east-bg {
+  background-color: red;
+  border-radius: 5px;
+}
+.west-bg {
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+}
