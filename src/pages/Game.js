@@ -32,8 +32,6 @@ const Game = () => {
     fetchPlayers();
   }, []);
 
-  console.log(posts);
-
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);

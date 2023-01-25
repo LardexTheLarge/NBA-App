@@ -25,6 +25,9 @@ const Header = () => {
             <Link to="/team" className="nav-link">
               Teams
             </Link>
+            <Link to="/game" className="nav-link">
+              Games
+            </Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
