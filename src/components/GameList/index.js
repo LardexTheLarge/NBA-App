@@ -2,9 +2,11 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 import dayjs from "dayjs";
 
 function GameList({ posts, loading }) {
+  console.log(posts);
   if (loading) {
     return <h3>...Loading</h3>;
   }
@@ -26,6 +28,7 @@ function GameList({ posts, loading }) {
               <Card.Text className="d-grid text-light">
                 Date: {dayjs(game.date).format("MMMM-D-YYYY")}
               </Card.Text>
+              <Button variant="primary">Game Stats</Button>
             </Card.Body>
           </Card>
         </Col>
