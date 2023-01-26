@@ -2,9 +2,11 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import dayjs from "dayjs";
 
-// In our return method, we use the map method to return a new array of `li` and `img` elements that are specific to each search result
 function GameList({ posts, loading }) {
+  const formatDate = dayjs(posts[0].date).format("MMMM-D-YYYY");
+  console.log(formatDate);
   if (loading) {
     return <h3>...Loading</h3>;
   }
@@ -17,7 +19,15 @@ function GameList({ posts, loading }) {
               <Card.Title className="text-light">
                 {game.home_team.full_name} vs {game.visitor_team.full_name}
               </Card.Title>
-              <div className="d-grid">date: {game.date}</div>
+              <Card.Subtitle className="mb-2 text-muted">
+                {game.home_team.abbreviation}: {game.home_team_score}
+              </Card.Subtitle>
+              <Card.Subtitle className="mb-2 text-muted">
+                {game.visitor_team.abbreviation}: {game.visitor_team_score}
+              </Card.Subtitle>
+              <Card.Text className="d-grid text-light">
+                Date: {dayjs(game.date).format("MMMM-D-YYYY")}
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
