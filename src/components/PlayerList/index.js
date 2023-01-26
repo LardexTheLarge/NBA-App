@@ -17,7 +17,12 @@ function PlayerList({ posts, loading }) {
               <Card.Title className="text-light">
                 {players.first_name} {players.last_name}
               </Card.Title>
-              <div className="d-grid">Position: {players.position}</div>
+              <Card.Subtitle className="mb-2 text-muted">
+                Position: {players.position}
+              </Card.Subtitle>
+              <Card.Text className="text-light">
+                Team: {players.team.full_name}
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>

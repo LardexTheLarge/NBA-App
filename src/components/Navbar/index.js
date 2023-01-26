@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Header = () => {
   return (
@@ -27,6 +26,9 @@ const Header = () => {
             </Link>
             <Link to="/game" className="nav-link">
               Games
+            </Link>
+            <Link to="/stats" className="nav-link">
+              Stats
             </Link>
           </Nav>
           <Form className="d-flex">

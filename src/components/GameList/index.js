@@ -5,8 +5,6 @@ import Row from "react-bootstrap/Row";
 import dayjs from "dayjs";
 
 function GameList({ posts, loading }) {
-  const formatDate = dayjs(posts[0].date).format("MMMM-D-YYYY");
-  console.log(formatDate);
   if (loading) {
     return <h3>...Loading</h3>;
   }

@@ -3,6 +3,7 @@ import Header from "./components/Navbar";
 import Home from "./pages/Home";
 import Team from "./pages/Team";
 import Game from "./pages/Game";
+import Stats from "./pages/Stats";
 
 import "./Theme.css";
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/team" element={<Team />} />
           <Route path="/game" element={<Game />} />
+          <Route path="/stats" element={<Stats />} />
         </Routes>
       </div>
     </Router>
