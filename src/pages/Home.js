@@ -5,7 +5,6 @@ import { Pagination } from "../components/Pagination";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  const [meta, setMeta] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(20);
@@ -23,8 +22,7 @@ const Home = () => {
     const fetchPlayers = async () => {
       setLoading(true);
       const res = await axios.request(options);
-      setPosts(res.data.data);
-      setMeta(res.data.meta);
+      setPosts(res.data);
       setLoading(false);
     };
 
@@ -32,26 +30,21 @@ const Home = () => {
   }, []);
 
   // console.log(meta);
-  // console.log(posts);
+  console.log(posts);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  //   const indexOfLastPost = currentPage * postsPerPage;
+  //   const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  //   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  //   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
-        <NewsList posts={currentPosts} loading={loading} />
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={meta.total_count}
-          paginate={paginate}
-        />
+        <NewsList posts={posts} loading={loading} />
       </div>
     </main>
   );
 };
 
-export default Players;
+export default Home;

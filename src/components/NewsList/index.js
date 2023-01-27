@@ -11,11 +11,15 @@ function NewsList({ posts, loading }) {
   }
   return (
     <Row xs={1} md={2} className="g-4">
-      {posts.map((game) => (
-        <Col key={game.id}>
+      {posts.map((news) => (
+        <Col key={news.length}>
           <Card className="bg-main">
             <Card.Body>
-              <Card.Title className="text-light">news</Card.Title>
+              <Card.Title className="text-light">{news.title}</Card.Title>
+              <Card.Text>Source: {news.source}</Card.Text>
+              <Button variant="primary" href={news.url} target="_blank">
+                Article
+              </Button>
             </Card.Body>
           </Card>
         </Col>
