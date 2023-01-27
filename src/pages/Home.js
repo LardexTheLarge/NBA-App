@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import PlayerList from "../components/PlayerList";
+import NewsList from "../components/NewsList";
 import { Pagination } from "../components/Pagination";
 
-const Players = () => {
+const Home = () => {
   const [posts, setPosts] = useState([]);
   const [meta, setMeta] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(27);
+  const [postsPerPage] = useState(20);
 
   const options = {
     method: "GET",
-    url: "https://free-nba.p.rapidapi.com/players",
-    params: { page: currentPage.toString(), per_page: postsPerPage.toString() },
+    url: "https://nba-latest-news.p.rapidapi.com/articles",
     headers: {
       "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
-      "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
+      "X-RapidAPI-Host": "nba-latest-news.p.rapidapi.com",
     },
   };
 
@@ -44,7 +43,7 @@ const Players = () => {
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
-        <PlayerList posts={currentPosts} loading={loading} />
+        <NewsList posts={currentPosts} loading={loading} />
         <Pagination
           postsPerPage={postsPerPage}
           totalPosts={meta.total_count}
