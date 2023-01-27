@@ -18,7 +18,7 @@ const Header = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Link to="/" className="nav-link">
+            <Link to="/players" className="nav-link">
               Players
             </Link>
             <Link to="/team" className="nav-link">
@@ -26,9 +26,6 @@ const Header = () => {
             </Link>
             <Link to="/game" className="nav-link">
               Games
-            </Link>
-            <Link to="/stats" className="nav-link">
-              Stats
             </Link>
           </Nav>
           <Form className="d-flex">

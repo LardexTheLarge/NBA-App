@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import dayjs from "dayjs";
 
 function GameList({ posts, loading }) {
-  console.log(posts);
   if (loading) {
     return <h3>...Loading</h3>;
   }

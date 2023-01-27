@@ -3,7 +3,7 @@ import axios from "axios";
 import PlayerList from "../components/PlayerList";
 import { Pagination } from "../components/Pagination";
 
-const Home = () => {
+const Players = () => {
   const [posts, setPosts] = useState([]);
   const [meta, setMeta] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -57,4 +57,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Players;
