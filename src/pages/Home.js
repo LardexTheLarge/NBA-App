@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NewsList from "../components/NewsList";
-import { Pagination } from "../components/Pagination";
+import { NewsPagination } from "../components/NewsPagination";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(20);
+  const [postsPerPage] = useState(10);
 
   const options = {
     method: "GET",
@@ -32,16 +32,21 @@ const Home = () => {
   // console.log(meta);
   console.log(posts);
 
-  //   const indexOfLastPost = currentPage * postsPerPage;
-  //   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  //   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  //   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
-        <NewsList posts={posts} loading={loading} />
+        <NewsList posts={currentPosts} loading={loading} />
+        <NewsPagination
+          postsPerPage={postsPerPage}
+          totalPosts={posts.length}
+          paginate={paginate}
+        />
       </div>
     </main>
   );
