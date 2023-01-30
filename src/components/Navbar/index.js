@@ -18,6 +18,9 @@ const Header = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
+            <Link to="/" className="nav-link">
+              News
+            </Link>
             <Link to="/players" className="nav-link">
               Players
             </Link>

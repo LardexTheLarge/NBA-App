@@ -12,7 +12,7 @@ const Game = () => {
 
   const options = {
     method: "GET",
-    url: "https://free-nba.p.rapidapi.com/games",
+    url: "https://free-nba.p.rapidapi.com/games?seasons[]=2022",
     params: { page: currentPage.toString(), per_page: postsPerPage.toString() },
     headers: {
       "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
