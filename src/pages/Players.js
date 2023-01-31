@@ -14,7 +14,7 @@ const Players = () => {
   const options = {
     method: "GET",
     url: "https://free-nba.p.rapidapi.com/players",
-    params: { page: currentPage, per_page: postsPerPage.toString() },
+    params: { page: currentPage, per_page: 27 },
     headers: {
       "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
       "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
@@ -40,8 +40,6 @@ const Players = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
@@ -51,17 +49,11 @@ const Players = () => {
           between={4}
           total={meta.total_count}
           limit={meta.per_page}
-          changePage={(posts) => {
-            setCurrentPage(posts);
+          changePage={(page) => {
+            setCurrentPage(page);
           }}
           ellipsis={1}
         />
-        {/* <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={meta.total_count}
-          currentPage={currentPage}
-          paginate={paginate}
-        /> */}
       </div>
     </main>
   );
