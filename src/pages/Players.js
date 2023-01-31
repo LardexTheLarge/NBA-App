@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PlayerList from "../components/PlayerList";
-import { Pagination } from "../components/Pagination";
+// import { Pagination } from "../components/Pagination";
+import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Players = () => {
   const [posts, setPosts] = useState([]);
@@ -13,7 +14,7 @@ const Players = () => {
   const options = {
     method: "GET",
     url: "https://free-nba.p.rapidapi.com/players",
-    params: { page: currentPage.toString(), per_page: postsPerPage.toString() },
+    params: { page: currentPage, per_page: postsPerPage.toString() },
     headers: {
       "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
       "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
@@ -32,7 +33,7 @@ const Players = () => {
     fetchPlayers();
   }, []);
 
-  // console.log(meta);
+  console.log(meta);
   // console.log(posts);
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -45,11 +46,22 @@ const Players = () => {
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
         <PlayerList posts={currentPosts} loading={loading} />
-        <Pagination
+        <PaginationControl
+          page={currentPage}
+          between={4}
+          total={meta.total_count}
+          limit={meta.per_page}
+          changePage={(posts) => {
+            setCurrentPage(posts);
+          }}
+          ellipsis={1}
+        />
+        {/* <Pagination
           postsPerPage={postsPerPage}
           totalPosts={meta.total_count}
+          currentPage={currentPage}
           paginate={paginate}
-        />
+        /> */}
       </div>
     </main>
   );

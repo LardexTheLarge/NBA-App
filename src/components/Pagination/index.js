@@ -1,6 +1,11 @@
 import React from "react";
 
-export const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+export const Pagination = ({
+  currentPage,
+  postsPerPage,
+  totalPosts,
+  paginate,
+}) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -11,10 +16,10 @@ export const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     <nav>
       <ul className="pagination">
         {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
+          <li key={number} className="page-item" aria-current="page">
             <a
               onClick={() => paginate(number)}
-              href="/players"
+              href={"/players"}
               className="page-link"
             >
               {number}
