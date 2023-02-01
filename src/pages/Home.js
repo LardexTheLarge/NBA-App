@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   // console.log(meta);
-  console.log(posts);
+  // console.log(posts);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

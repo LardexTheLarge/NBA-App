@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PlayerList from "../components/PlayerList";
-// import { Pagination } from "../components/Pagination";
 import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Players = () => {
@@ -10,6 +9,9 @@ const Players = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(27);
+
+  meta.current_page = currentPage;
+  meta.next_page = currentPage + 1;
 
   const options = {
     method: "GET",
@@ -24,7 +26,7 @@ const Players = () => {
   useEffect(() => {
     const fetchPlayers = async () => {
       setLoading(true);
-      const res = await axios.request(options);
+      const res = await axios.get("https://www.balldontlie.io/api/v1/players");
       setPosts(res.data.data);
       setMeta(res.data.meta);
       setLoading(false);
@@ -40,6 +42,7 @@ const Players = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+  console.log(currentPosts);
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
@@ -51,6 +54,7 @@ const Players = () => {
           limit={meta.per_page}
           changePage={(page) => {
             setCurrentPage(page);
+            console.log(page);
           }}
           ellipsis={1}
         />
