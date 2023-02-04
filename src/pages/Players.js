@@ -10,17 +10,21 @@ const Players = () => {
   const [page, setPage] = useState(1);
   const [postsPerPage] = useState(27);
 
-  const options = {
-    method: "GET",
-    url: "https://free-nba.p.rapidapi.com/players",
-    params: { page: 1, per_page: 27 },
-    headers: {
-      "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
-      "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
-    },
+  const handleRefresh = () => {
+    this.setState({});
   };
 
   useEffect(() => {
+    const options = {
+      method: "GET",
+      url: "https://free-nba.p.rapidapi.com/players",
+      params: { page: page, per_page: 27 },
+      headers: {
+        "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
+        "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
+      },
+    };
+
     const fetchPlayers = async () => {
       setLoading(true);
       const res = await axios.request(options);
@@ -31,18 +35,19 @@ const Players = () => {
     fetchPlayers();
   }, []);
 
+  // const indexOfLastPost = page * postsPerPage;
+  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
   console.log(meta);
   console.log(posts);
 
-  const indexOfLastPost = page * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  // console.log(currentPosts);
 
-  console.log(currentPosts);
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
-        <PlayerList posts={currentPosts} loading={loading} />
+        <PlayerList posts={posts} loading={loading} />
         <PaginationControl
           page={page}
           between={4}
@@ -50,8 +55,9 @@ const Players = () => {
           limit={postsPerPage}
           changePage={(page) => {
             setPage(page);
+            this.handleRefresh();
             meta.current_page = page;
-            options.params.page = meta.current_page;
+            meta.next_page = page + 1;
           }}
           ellipsis={1}
         />
