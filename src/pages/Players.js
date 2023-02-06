@@ -10,10 +10,6 @@ const Players = () => {
   const [page, setPage] = useState(1);
   const [postsPerPage] = useState(27);
 
-  const handleRefresh = () => {
-    this.setState({});
-  };
-
   useEffect(() => {
     const options = {
       method: "GET",
@@ -35,6 +31,11 @@ const Players = () => {
     fetchPlayers();
   }, []);
 
+  const refresh = () => {
+    // it re-renders the component
+    window.location.reload();
+  };
+
   // const indexOfLastPost = page * postsPerPage;
   // const indexOfFirstPost = indexOfLastPost - postsPerPage;
   // const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -55,7 +56,7 @@ const Players = () => {
           limit={postsPerPage}
           changePage={(page) => {
             setPage(page);
-            this.handleRefresh();
+            refresh();
             meta.current_page = page;
             meta.next_page = page + 1;
           }}
