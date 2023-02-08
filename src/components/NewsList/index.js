@@ -3,14 +3,13 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import dayjs from "dayjs";
 
 function NewsList({ posts, loading }) {
   if (loading) {
     return <h3>...Loading</h3>;
   }
   return (
-    <Row xs={1} md={2} className="g-4">
+    <Row xs={1} md={2} className="g-4 mb-2">
       {posts.map((news) => (
         <Col key={news.length}>
           <Card className="bg-main">

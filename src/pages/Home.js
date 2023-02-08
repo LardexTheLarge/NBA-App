@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NewsList from "../components/NewsList";
-import { NewsPagination } from "../components/NewsPagination";
+import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [postsPerPage] = useState(10);
 
   const options = {
@@ -27,25 +27,25 @@ const Home = () => {
     };
 
     fetchPlayers();
-  }, []);
+  }, [page]);
 
-  // console.log(meta);
-  // console.log(posts);
-
-  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfLastPost = page * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
         <NewsList posts={currentPosts} loading={loading} />
-        <NewsPagination
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={paginate}
+        <PaginationControl
+          page={page}
+          between={4}
+          total={posts.length}
+          limit={postsPerPage}
+          changePage={(page) => {
+            setPage(page);
+          }}
+          ellipsis={1}
         />
       </div>
     </main>
