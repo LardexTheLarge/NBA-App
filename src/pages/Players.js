@@ -5,9 +5,9 @@ import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Players = () => {
   const [posts, setPosts] = useState([]);
-  const [meta, setMeta] = useState([]);
+  const [meta, setMeta] = useState({});
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(meta.current_page);
+  const [page, setPage] = useState(1);
   const [postsPerPage] = useState(27);
 
   useEffect(() => {
@@ -29,14 +29,14 @@ const Players = () => {
       setLoading(false);
     };
     fetchPlayers();
-  }, []);
+  }, [page]);
 
-  // const indexOfLastPost = page * postsPerPage;
-  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  // const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastPost = page * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   console.log(meta);
-  // console.log(posts);
+  console.log(posts);
 
   // console.log(currentPosts);
 
@@ -50,9 +50,9 @@ const Players = () => {
           total={meta.total_count}
           limit={postsPerPage}
           changePage={(page) => {
-            setPage(page);
             meta.current_page = page;
             meta.next_page = page + 1;
+            setPage(page);
           }}
           ellipsis={1}
         />
