@@ -31,15 +31,6 @@ const Players = () => {
     fetchPlayers();
   }, [page]);
 
-  const indexOfLastPost = page * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  console.log(meta);
-  console.log(posts);
-
-  // console.log(currentPosts);
-
   return (
     <main className="card-container">
       <div className="col-12 col-md-10 my-3">
