@@ -9,7 +9,7 @@ function PlayerList({ posts, loading }) {
     return <h3>...Loading</h3>;
   }
   return (
-    <Row xs={1} md={3} className="g-4">
+    <Row xs={1} md={3} className="g-4 mb-2">
       {posts.map((players) => (
         <Col key={players.id}>
           <Card className="bg-main">

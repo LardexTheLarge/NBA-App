@@ -10,7 +10,7 @@ function GameList({ posts, loading }) {
     return <h3>...Loading</h3>;
   }
   return (
-    <Row xs={1} md={2} className="g-4">
+    <Row xs={1} md={2} className="g-4 mb-2">
       {posts.map((game) => (
         <Col key={game.id}>
           <Card className="bg-main">
@@ -27,7 +27,7 @@ function GameList({ posts, loading }) {
               <Card.Text className="d-grid text-light">
                 Date: {dayjs(game.date).format("MMMM-D-YYYY")}
               </Card.Text>
-              <Button variant="primary">Game Stats</Button>
+              {/* <Button variant="primary">Game Stats</Button> */}
             </Card.Body>
           </Card>
         </Col>
