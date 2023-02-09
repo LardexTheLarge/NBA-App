@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import StatsList from "../components/StatsList/index";
-import { Pagination } from "../components/Pagination";
 
 const Stats = () => {
   const [posts, setPosts] = useState([]);
