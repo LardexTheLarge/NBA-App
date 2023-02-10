@@ -6,11 +6,13 @@ import Team from "./pages/Team";
 import Game from "./pages/Game";
 import Stats from "./pages/Stats";
 
-import "./Theme.css";
+import "./assets/css/Theme.css";
+import "./assets/css/style.css";
 
 function App() {
   return (
     <Router>
+      {/* <div className="content-wrapper"> */}
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <Routes>

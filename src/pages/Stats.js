@@ -38,11 +38,11 @@ const Stats = () => {
   //TODO: add pagination to game page
 
   return (
-    <main className="card-container">
-      <div className="col-12 col-md-10 my-3">
+    <div className="main-panel">
+      <div className="content-wrapper">
         <StatsList posts={currentPosts} loading={loading} />
       </div>
-    </main>
+    </div>
   );
 };
 
