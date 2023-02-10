@@ -30,6 +30,9 @@ const Header = () => {
             <Link to="/game" className="nav-link">
               Games
             </Link>
+            <Link to="/stats" className="nav-link">
+              Stats
+            </Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

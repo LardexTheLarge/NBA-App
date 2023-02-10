@@ -10,18 +10,34 @@ function StatsList({ posts, loading }) {
     return <h3>...Loading</h3>;
   }
   return (
-    <Row xs={1} md={3} className="g-4">
+    <div className="row">
       {posts.map((stats) => (
-        <Col key={stats.id}>
-          <Card className="bg-main">
-            <Card.Body>
-              <Card.Title className="text-light">stats</Card.Title>
-              <div></div>
-            </Card.Body>
-          </Card>
-        </Col>
+        <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div className="card">
+            <div className="card-body">
+              <div className="row">
+                <div className="col-9">
+                  <div className="d-flex align-items-center align-self-start">
+                    <h3 className="mb-0">$12.34</h3>
+                    <p className="text-success ms-2 mb-0 font-weight-medium">
+                      +3.5%
+                    </p>
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div className="icon icon-box-success ">
+                    <span className="mdi mdi-arrow-top-right icon-item"></span>
+                  </div>
+                </div>
+              </div>
+              <h6 className="text-muted font-weight-normal">
+                Potential growth
+              </h6>
+            </div>
+          </div>
+        </div>
       ))}
-    </Row>
+    </div>
   );
 }
 
