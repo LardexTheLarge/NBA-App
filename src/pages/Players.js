@@ -32,7 +32,7 @@ const Players = () => {
   }, [page]);
 
   return (
-    <main className="card-container">
+    <main className="card-container content-wrapper">
       <div className="col-12 col-md-10 my-3">
         <PlayerList posts={posts} loading={loading} />
         <PaginationControl

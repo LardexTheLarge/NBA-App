@@ -34,7 +34,7 @@ const Home = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <main className="card-container">
+    <main className="card-container content-wrapper">
       <div className="col-12 col-md-10 my-3">
         <NewsList posts={currentPosts} loading={loading} />
         <PaginationControl

@@ -38,10 +38,8 @@ const Stats = () => {
   //TODO: add pagination to game page
 
   return (
-    <div className="main-panel">
-      <div className="content-wrapper">
-        <StatsList posts={currentPosts} loading={loading} />
-      </div>
+    <div className="content-wrapper">
+      <StatsList posts={currentPosts} loading={loading} />
     </div>
   );
 };
