@@ -1,12 +1,35 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import axios from "axios";
 
 const Header = () => {
+  const [search, setSearch] = useState("");
+
+  const searchPlayer = async (query) => {
+    const player = await axios.get(
+      `https://www.balldontlie.io/api/v1/players?per_page=100&search=${query}`
+    );
+  };
+
+  useEffect(() => {
+    searchPlayer(search);
+  }, []);
+
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    searchPlayer(search);
+    setSearch("");
+  };
+
   return (
     <Navbar className="bg-main" expand="md">
       <Container fluid>
@@ -30,18 +53,17 @@ const Header = () => {
             <Link to="/game" className="nav-link">
               Games
             </Link>
-            {/* <Link to="/stats" className="nav-link">
-              Stats
-            </Link> */}
           </Nav>
           <Form className="d-flex">
             <Form.Control
-              type="search"
+              value={search}
+              onChange={handleInputChange}
+              type="text"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button onClick={handleFormSubmit}>Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
