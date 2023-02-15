@@ -5,14 +5,17 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
 function NewsList({ posts, loading }) {
-  // console.log(posts.indexOf());
+  //inserts an id into each object in the array so the map method in the react component
+  //can have a specific key
+  posts = posts.map((item, index) => ({ ...item, id: index + 1 }));
+
   if (loading) {
     return <h3>...Loading</h3>;
   }
   return (
     <Row xs={1} md={2} className="g-4 mb-2">
       {posts.map((news) => (
-        <Col key={news.title.length}>
+        <Col key={news.id}>
           <Card className="bg-main">
             <Card.Body>
               <Card.Title className="text-light">{news.title}</Card.Title>
