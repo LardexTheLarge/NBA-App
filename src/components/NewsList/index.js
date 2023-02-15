@@ -5,14 +5,14 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
 function NewsList({ posts, loading }) {
-  console.log(posts.map);
+  // console.log(posts.indexOf());
   if (loading) {
     return <h3>...Loading</h3>;
   }
   return (
     <Row xs={1} md={2} className="g-4 mb-2">
       {posts.map((news) => (
-        <Col key={news.length}>
+        <Col key={news.title.length}>
           <Card className="bg-main">
             <Card.Body>
               <Card.Title className="text-light">{news.title}</Card.Title>
