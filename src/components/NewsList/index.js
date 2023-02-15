@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
 function NewsList({ posts, loading }) {
+  console.log(posts.map);
   if (loading) {
     return <h3>...Loading</h3>;
   }
