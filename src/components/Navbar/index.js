@@ -9,12 +9,13 @@ import axios from "axios";
 
 const Header = () => {
   const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
 
   const searchPlayer = async (query) => {
     const player = await axios.get(
-      `https://www.balldontlie.io/api/v1/players?per_page=100&search=${query}`
+      `https://www.balldontlie.io/api/v1/players?per_page=10&search=${query}`
     );
-    console.log(player);
+    setResults(player.data.data);
   };
 
   useEffect(() => {
@@ -30,6 +31,8 @@ const Header = () => {
     searchPlayer(search);
     setSearch("");
   };
+
+  console.log(results);
 
   return (
     <Navbar className="bg-main" expand="md">
@@ -64,7 +67,14 @@ const Header = () => {
               className="me-2"
               aria-label="Search"
             />
-            <Button onClick={handleFormSubmit}>Search</Button>
+            <Link
+              className="btn btn-primary"
+              type="submit"
+              to="/singlePlayer"
+              onClick={handleFormSubmit}
+            >
+              Search
+            </Link>
           </Form>
         </Navbar.Collapse>
       </Container>
