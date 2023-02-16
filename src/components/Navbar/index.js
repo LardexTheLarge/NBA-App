@@ -14,6 +14,7 @@ const Header = () => {
     const player = await axios.get(
       `https://www.balldontlie.io/api/v1/players?per_page=100&search=${query}`
     );
+    console.log(player);
   };
 
   useEffect(() => {
