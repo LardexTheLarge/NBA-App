@@ -32,8 +32,6 @@ const Header = () => {
     setSearch("");
   };
 
-  console.log(results);
-
   return (
     <Navbar className="bg-main" expand="md">
       <Container fluid>
@@ -68,9 +66,8 @@ const Header = () => {
               aria-label="Search"
             />
             <Link
-              className="btn btn-primary"
-              type="submit"
               to="/singlePlayer"
+              className="btn btn-primary"
               onClick={handleFormSubmit}
             >
               Search
