@@ -5,17 +5,17 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import axios from "axios";
+// import SinglePlayerList from "../SinglePlayerList";
+import SinglePlayer from "../../pages/SinglePlayer";
+import API from "../../utils/API";
 
 const Header = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
 
   const searchPlayer = async (query) => {
-    const player = await axios.get(
-      `https://www.balldontlie.io/api/v1/players?per_page=10&search=${query}`
-    );
-    setResults(player.data.data);
+    const res = await API.player(query);
+    setResults(res.data.data);
   };
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const Header = () => {
     searchPlayer(search);
     setSearch("");
   };
+  console.log(results);
 
   return (
     <Navbar className="bg-main" expand="md">
@@ -57,20 +58,15 @@ const Header = () => {
             </Link>
           </Nav>
           <Form className="d-flex">
-            <Form.Control
+            <input
               value={search}
               onChange={handleInputChange}
               type="text"
               placeholder="Search"
               className="me-2"
-              aria-label="Search"
             />
-            <Link
-              to="/singlePlayer"
-              className="btn btn-primary"
-              onClick={handleFormSubmit}
-            >
-              Search
+            <Link to="/singlePlayer" onClick={handleFormSubmit}>
+              <SinglePlayer results={results} />
             </Link>
           </Form>
         </Navbar.Collapse>
