@@ -1,38 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-// import SinglePlayerList from "../SinglePlayerList";
-import SinglePlayer from "../../pages/SinglePlayer";
-import API from "../../utils/API";
+import { NavbarSearch } from "../NavbarSearch";
 
 const Header = () => {
-  const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
-
-  const searchPlayer = async (query) => {
-    const res = await API.player(query);
-    setResults(res.data.data);
-  };
-
-  useEffect(() => {
-    searchPlayer(search);
-  }, []);
-
-  const handleInputChange = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    searchPlayer(search);
-    setSearch("");
-  };
-  console.log(results);
-
   return (
     <Navbar className="bg-main" expand="md">
       <Container fluid>
@@ -57,18 +30,7 @@ const Header = () => {
               Games
             </Link>
           </Nav>
-          <Form className="d-flex">
-            <input
-              value={search}
-              onChange={handleInputChange}
-              type="text"
-              placeholder="Search"
-              className="me-2"
-            />
-            <Link to="/singlePlayer" onClick={handleFormSubmit}>
-              <SinglePlayer results={results} />
-            </Link>
-          </Form>
+          <NavbarSearch />
         </Navbar.Collapse>
       </Container>
     </Navbar>
