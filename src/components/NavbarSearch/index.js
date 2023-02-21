@@ -10,13 +10,14 @@ export const NavbarSearch = () => {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
 
+  const searchPlayer = async (query) => {
+    setLoading(true);
+    const res = await API.player(query);
+    setResults(res.data.data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const searchPlayer = async (query) => {
-      setLoading(true);
-      const res = await API.player(query);
-      setResults(res.data.data);
-      setLoading(false);
-    };
     searchPlayer(search);
   }, []);
 
@@ -26,24 +27,23 @@ export const NavbarSearch = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // searchPlayer(search);
+    searchPlayer(search);
     setSearch("");
   };
+
+  console.log(results);
   return (
-    <Link to="/singlePlayer">
-      {/* <SinglePlayer results={results} /> */}
-      <Form className="d-flex">
-        <Form.Control
-          value={search}
-          onChange={handleInputChange}
-          type="text"
-          placeholder="Search"
-          className="me-2"
-        />
-        <Button onClick={handleFormSubmit} type="submit">
-          Search
-        </Button>
-      </Form>
-    </Link>
+    <Form className="d-flex">
+      <Form.Control
+        value={search}
+        onChange={handleInputChange}
+        type="text"
+        placeholder="Search"
+        className="me-2"
+      />
+      <Button onClick={handleFormSubmit} type="submit">
+        <Link to="/singlePlayer">Search</Link>
+      </Button>
+    </Form>
   );
 };
