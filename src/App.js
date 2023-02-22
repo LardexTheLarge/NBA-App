@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./components/Navbar";
 import Home from "./pages/Home";
 import Players from "./pages/Players";
 import Team from "./pages/Team";
@@ -12,18 +12,18 @@ import "./assets/css/style.css";
 
 function App() {
   return (
-    <Router>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <Header />
+    <div className="flex-column justify-flex-start min-100-vh">
+      <BrowserRouter>
+        <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/players" element={<Players />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/game" element={<Game />} />
-          <Route path="/singlePlayer" element={<SinglePlayer />} />
+          <Route element={<Home />} path="/" />
+          <Route element={<Players />} path="/players" />
+          <Route element={<Team />} path="/team" />
+          <Route element={<Game />} path="/game" />
+          <Route element={<SinglePlayer />} path="/singlePlayer" />
         </Routes>
-      </div>
-    </Router>
+      </BrowserRouter>
+    </div>
   );
 }
 

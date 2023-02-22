@@ -3,9 +3,19 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import SinglePlayerList from "../components/SinglePlayerList";
+import API from "../utils/API";
 import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const SinglePlayer = (props) => {
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchPlayer = async () => {
+      const res = await API.player();
+    };
+  }, []);
+
   console.log(props.results);
   return (
     <Row xs={1} md={3} className="g-4 mb-2">

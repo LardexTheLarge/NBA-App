@@ -31,7 +31,7 @@ export const NavbarSearch = () => {
     setSearch("");
   };
 
-  console.log(results);
+  // console.log(results);
   return (
     <Form className="d-flex">
       <Form.Control
@@ -42,7 +42,7 @@ export const NavbarSearch = () => {
         className="me-2"
       />
       <Button onClick={handleFormSubmit} type="submit">
-        <Link to="/singlePlayer">Search</Link>
+        <Link to="/players">Search</Link>
       </Button>
     </Form>
   );
