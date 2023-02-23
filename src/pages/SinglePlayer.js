@@ -2,24 +2,26 @@ import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import SinglePlayerList from "../components/SinglePlayerList";
+// import SinglePlayerList from "../components/SinglePlayerList";
 import API from "../utils/API";
-import { PaginationControl } from "react-bootstrap-pagination-control";
+// import { PaginationControl } from "react-bootstrap-pagination-control";
 
-const SinglePlayer = (props) => {
+const SinglePlayer = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchPlayer = async () => {
       const res = await API.player();
+      setResults(res);
     };
+    fetchPlayer();
   }, []);
 
-  console.log(props.results);
+  console.log(results);
   return (
     <Row xs={1} md={3} className="g-4 mb-2">
-      {props.results.map((players) => (
+      {/* {results.map((players) => (
         <Col key={players.id}>
           <Card className="bg-main">
             <Card.Body>
@@ -35,7 +37,7 @@ const SinglePlayer = (props) => {
             </Card.Body>
           </Card>
         </Col>
-      ))}
+      ))} */}
     </Row>
   );
 };

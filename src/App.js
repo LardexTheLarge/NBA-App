@@ -4,8 +4,6 @@ import Home from "./pages/Home";
 import Players from "./pages/Players";
 import Team from "./pages/Team";
 import Game from "./pages/Game";
-import Stats from "./pages/Stats";
-import SinglePlayer from "./pages/SinglePlayer";
 
 import "./assets/css/Theme.css";
 import "./assets/css/style.css";
@@ -20,7 +18,6 @@ function App() {
           <Route element={<Players />} path="/players" />
           <Route element={<Team />} path="/team" />
           <Route element={<Game />} path="/game" />
-          <Route element={<SinglePlayer />} path="/singlePlayer" />
         </Routes>
       </BrowserRouter>
     </div>

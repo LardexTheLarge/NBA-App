@@ -4,13 +4,13 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 // In our return method, we use the map method to return a new array of `li` and `img` elements that are specific to each search result
-function PlayerList({ posts, loading }) {
+function PlayerList({ results, loading }) {
   if (loading) {
     return <h3>...Loading</h3>;
   }
   return (
     <Row xs={1} md={3} className="g-4 mb-2">
-      {posts.map((players) => (
+      {results.map((players) => (
         <Col key={players.id}>
           <Card className="bg-main">
             <Card.Body>

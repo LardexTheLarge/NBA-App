@@ -30,7 +30,7 @@ const Header = () => {
               Games
             </Link>
           </Nav>
-          <NavbarSearch />
+          {/* <NavbarSearch /> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
