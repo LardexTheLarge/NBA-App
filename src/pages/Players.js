@@ -35,18 +35,21 @@ const Players = () => {
 
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
+  const [meta, setMeta] = useState({});
+  const [page, setPage] = useState(1);
   const [results, setResults] = useState([]);
 
-  const searchPlayer = async (query) => {
-    setLoading(true);
-    const res = await API.player(query);
-    setResults(res.data.data);
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const searchPlayer = async (query) => {
+      setLoading(true);
+      const res = await API.player(query);
+      setResults(res.data.data);
+      setMeta(res.data.meta);
+      setLoading(false);
+    };
+
     searchPlayer(search);
-  }, []);
+  }, [page]);
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
@@ -54,9 +57,10 @@ const Players = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    searchPlayer(search);
+    // searchPlayer(search);
     setSearch("");
   };
+  console.log(meta);
   return (
     <main className="card-container content-wrapper">
       <div className="col-12 col-md-10 my-3">
@@ -66,18 +70,18 @@ const Players = () => {
           handleInputChange={handleInputChange}
         />
         <PlayerList results={results} loading={loading} />
-        {/* <PaginationControl
+        <PaginationControl
           page={page}
           between={4}
           total={meta.total_count}
-          limit={postsPerPage}
+          limit={27}
           changePage={(page) => {
             meta.current_page = page;
             meta.next_page = page + 1;
             setPage(page);
           }}
           ellipsis={1}
-        /> */}
+        />
       </div>
     </main>
   );
