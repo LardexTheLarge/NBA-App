@@ -1,38 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PlayerList from "../components/PlayerList";
-import { NavbarSearch } from "../components/NavbarSearch";
-import API from "../utils/API";
+import { NavbarSearch } from "../components/SearchBar";
 import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Players = () => {
-  // const [posts, setPosts] = useState([]);
-  // const [meta, setMeta] = useState({});
-  // const [loading, setLoading] = useState(false);
-  // const [page, setPage] = useState(1);
-  // const [postsPerPage] = useState(27);
-
-  // useEffect(() => {
-  //   const options = {
-  //     method: "GET",
-  //     url: "https://free-nba.p.rapidapi.com/players",
-  //     params: { page: page, per_page: 27 },
-  //     headers: {
-  //       "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
-  //       "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
-  //     },
-  //   };
-
-  //   const fetchPlayers = async () => {
-  //     setLoading(true);
-  //     const res = await axios.request(options);
-  //     setPosts(res.data.data);
-  //     setMeta(res.data.meta);
-  //     setLoading(false);
-  //   };
-  //   fetchPlayers();
-  // }, [page]);
-
   const [results, setResults] = useState([]);
   const [meta, setMeta] = useState({});
   const [loading, setLoading] = useState(false);
@@ -60,7 +32,7 @@ const Players = () => {
 
   useEffect(() => {
     searchPlayer(search);
-  }, [page]);
+  }, [page, search]);
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
@@ -71,8 +43,7 @@ const Players = () => {
     searchPlayer(search);
     setSearch("");
   };
-  // console.log(meta);
-  // console.log(results);
+
   return (
     <main className="card-container content-wrapper">
       <div className="col-12 col-md-10 my-3">

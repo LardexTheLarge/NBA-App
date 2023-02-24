@@ -5,6 +5,7 @@ import Players from "./pages/Players";
 import Team from "./pages/Team";
 import Game from "./pages/Game";
 
+//CSS from UI template and user made
 import "./assets/css/Theme.css";
 import "./assets/css/style.css";
 
