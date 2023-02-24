@@ -33,21 +33,32 @@ const Players = () => {
   //   fetchPlayers();
   // }, [page]);
 
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [meta, setMeta] = useState({});
-  const [page, setPage] = useState(1);
   const [results, setResults] = useState([]);
+  const [meta, setMeta] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [postsPerPage] = useState(27);
+  const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    const searchPlayer = async (query) => {
-      setLoading(true);
-      const res = await API.player(query);
-      setResults(res.data.data);
-      setMeta(res.data.meta);
-      setLoading(false);
+  const searchPlayer = async (query) => {
+    const options = {
+      method: "GET",
+      url: `https://free-nba.p.rapidapi.com/players?per_page=27&search=${query}`,
+      params: { page: page, per_page: postsPerPage },
+      headers: {
+        "X-RapidAPI-Key": "86b4788c35mshbfeccd3463252bbp1ce753jsn40224f9087e4",
+        "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
+      },
     };
 
+    setLoading(true);
+    const res = await axios.request(options);
+    setResults(res.data.data);
+    setMeta(res.data.meta);
+    setLoading(false);
+  };
+
+  useEffect(() => {
     searchPlayer(search);
   }, [page]);
 
@@ -57,10 +68,11 @@ const Players = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // searchPlayer(search);
+    searchPlayer(search);
     setSearch("");
   };
-  console.log(meta);
+  // console.log(meta);
+  // console.log(results);
   return (
     <main className="card-container content-wrapper">
       <div className="col-12 col-md-10 my-3">
