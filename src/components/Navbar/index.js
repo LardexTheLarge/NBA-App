@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavbarSearch } from "../NavbarSearch";
 
 const Header = () => {
   return (
@@ -30,7 +29,6 @@ const Header = () => {
               Games
             </Link>
           </Nav>
-          {/* <NavbarSearch /> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

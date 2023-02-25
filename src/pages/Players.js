@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PlayerList from "../components/PlayerList";
-import { NavbarSearch } from "../components/SearchBar";
+import { SearchBar } from "../components/SearchBar";
 import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Players = () => {
@@ -41,13 +41,12 @@ const Players = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     searchPlayer(search);
-    setSearch("");
   };
 
   return (
     <main className="card-container content-wrapper">
       <div className="col-12 col-md-10 my-3">
-        <NavbarSearch
+        <SearchBar
           search={search}
           handleFormSubmit={handleFormSubmit}
           handleInputChange={handleInputChange}

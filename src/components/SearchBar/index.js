@@ -1,21 +1,17 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export const NavbarSearch = (props) => {
+export const SearchBar = (props) => {
   return (
-    <>
-      <Form className="d-flex">
-        <Form.Control
-          value={props.search}
-          onChange={props.handleInputChange}
-          type="text"
-          placeholder="Search"
-          className="me-2"
-        />
-        <Button onClick={props.handleFormSubmit} type="submit">
-          Search
-        </Button>
-      </Form>
-    </>
+    <Form className="d-flex mb-4" onSubmit={props.handleFormSubmit}>
+      <Form.Control
+        value={props.search}
+        onChange={props.handleInputChange}
+        type="text"
+        placeholder="Search Player's Name"
+        className="me-2"
+      />
+      {/* <Button type="submit">Search</Button> */}
+    </Form>
   );
 };

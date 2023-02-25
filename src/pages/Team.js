@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TeamList from "../components/TeamList/Index";
-import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Team = () => {
   const [posts, setPosts] = useState([]);
@@ -36,18 +35,6 @@ const Team = () => {
     <main className="card-container content-wrapper">
       <div className="col-12 col-md-10 my-3">
         <TeamList posts={posts} loading={loading} />
-        <PaginationControl
-          page={page}
-          between={4}
-          total={meta.total_count}
-          limit={postsPerPage}
-          changePage={(page) => {
-            meta.current_page = page;
-            meta.next_page = page + 1;
-            setPage(page);
-          }}
-          ellipsis={1}
-        />
       </div>
     </main>
   );
