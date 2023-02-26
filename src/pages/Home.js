@@ -39,7 +39,7 @@ const Home = () => {
         <NewsList posts={currentPosts} loading={loading} />
         <PaginationControl
           page={page}
-          between={4}
+          between={2}
           total={posts.length}
           limit={postsPerPage}
           changePage={(page) => {

@@ -38,7 +38,7 @@ const Game = () => {
         <GameList posts={posts} loading={loading} />
         <PaginationControl
           page={page}
-          between={4}
+          between={2}
           total={meta.total_count}
           limit={postsPerPage}
           changePage={(page) => {

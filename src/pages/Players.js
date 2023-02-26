@@ -54,7 +54,7 @@ const Players = () => {
         <PlayerList results={results} loading={loading} />
         <PaginationControl
           page={page}
-          between={4}
+          between={2}
           total={meta.total_count}
           limit={27}
           changePage={(page) => {

@@ -20310,7 +20310,7 @@ div.tagsinput {
       .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
         display: inline-block; }
   .navbar-collapse {
-    display: flex;
+    /* display: flex; */
     margin-top: 0.5rem; } }
 
 @media (max-width: 480px) {
