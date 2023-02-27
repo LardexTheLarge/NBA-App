@@ -2,7 +2,7 @@
 
 ## Description
 
-My program gets data from an NBA API and displays NBA news, players that the user can search, teams, and games for the current season.
+My program gets data from an the balldontlie.io API and NBA Latest news API from Rapid API and displays NBA news, players that the user can search, teams, and games for the current season.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
